@@ -14,20 +14,20 @@ from scipy import stats
 # create a function for generating simulated data in a predefined
 # environment, with a predefined temperature and learning rate:
 
-def simulation(env, temp, learn, jitter_sd = 0.5):  #Alexander: jitter_sd = 0.5
+def simulation(env, temp, learn, jitter_sd = 0.5):  #Alexander: jitter_sd = 0.5 #emma: wa doet een jitter hier- welk effect
     rule_list = []
     resp_list = []
     reward_list = []    
     
     # create a list containing the rewarded response in the above list in the stable environment:
     if env == 0:
-        rev_list = []
-        for trial_loop in range(100):
+        rev_list = [] #waarom is dit eig rev list, wa betekent een list die gwn []
+        for trial_loop in range(100): #emma:wat doet append
             rule_list.append(0)
             rev_list.append(trial_loop)
         rev_list = random.sample(rev_list, 20)
         for rev_loop in range(20):
-            rule_list[rev_list[rev_loop]] = 1
+            rule_list[rev_list[rev_loop]] = 1 #wa wil dit zeggen de regel op dat moment is de rev? revolving?
     
     # create a list containing the rewarded response to each presented
     # stimulus in the above list in the volatile environment:
@@ -46,11 +46,11 @@ def simulation(env, temp, learn, jitter_sd = 0.5):  #Alexander: jitter_sd = 0.5
             if block_loop == 3:
                 switch = 100
                 winner, loser = 1, 0
-            rev_list = []
-            for trial_loop in range(trial, switch):
-                rule_list.append(winner)
+            rev_list = [] #waarom komt de revlist hier zo laat
+            for trial_loop in range(trial, switch): #wnr wordt die trial loop aangemaakt vanwaar komt die?
+                rule_list.append(winner) 
                 rev_list.append(trial_loop)
-            rev_list = random.sample(rev_list, round(0.1*len(rev_list)))
+            rev_list = random.sample(rev_list, round(0.1*len(rev_list))) #wat is die round en 0.1 en len
             for rev_loop in range(len(rev_list)):
                 rule_list[rev_list[rev_loop]] = loser
             trial = switch
@@ -61,19 +61,19 @@ def simulation(env, temp, learn, jitter_sd = 0.5):  #Alexander: jitter_sd = 0.5
     # create a value vector, containing only small random weights:
     weights = np.zeros(2)
     for trial_loop in range(100):
-        noise_learn = np.clip(np.random.normal(learn, jitter_sd), 0, 1) #Alexander
-        noise_temp = np.clip(np.random.normal(temp, jitter_sd), 0.01, None) #Alexander
+        noise_learn = np.clip(np.random.normal(learn, jitter_sd), 0, 1) #Alexander, heb je ook de trial loop toegevoeg of gwn de noise, waarom?
+        noise_temp = np.clip(np.random.normal(temp, jitter_sd), 0.01, None) #Alexander, waarom, waarom none, is dit gwn ipv temp?
         
         # select a response:
-        prob_zero = np.exp(weights[0]/noise_temp)/(np.exp(weights[0]/noise_temp)+np.exp(weights[1]/noise_temp)) #Alexander: noise_temp ipv temp
-        resp = int(random.random() > prob_zero)
+        prob_zero = np.exp(weights[0]/noise_temp)/(np.exp(weights[0]/noise_temp)+np.exp(weights[1]/noise_temp)) #Alexander: noise_temp ipv temp, waarom?
+        resp = int(random.random() > prob_zero) #dit is de respons ma waarom random en prob zero en interval
         resp_list.append(resp)
         
         # check whether a reward was obtained:
         rule = rule_list[trial_loop]
         if resp == rule:
             reward = 1
-        if resp != rule:
+        if resp != rule: #waarom !
             reward = 0
         reward_list.append(reward)
         
@@ -83,7 +83,7 @@ def simulation(env, temp, learn, jitter_sd = 0.5):  #Alexander: jitter_sd = 0.5
     # save the data in a data frame:
     data = pd.DataFrame({"rule": rule_list, "resp": resp_list, "reward": reward_list})
     # return the simulated data:
-    return data
+    return data #waarom is dit belangrijk
 
 #%%
 
@@ -284,5 +284,6 @@ plt.xlabel("true learning rates")
 plt.ylabel("estimated learning rates")
 plt.grid(axis = "y")
 # plt.savefig("Volatile_Learning_Rate_Recovery_Rates")
+
 
 print(stats.pearsonr(volatile["true_learn"], volatile["est_learn"]))
