@@ -1,8 +1,8 @@
 Jonas
 In Analyses
   deze moeten niet meer aangepast worden door mij, zijn al gemaakt voor deze specifieke dataset
-  1. behaviour analyses
-  2. data aggregation
+  1. behaviour analyses (via converter omgezet in Rfile)
+  2. data aggregation (via converter omgezet in Rfile)
   3. data set clara (de student van vorig jaar die thesis met deze dataset gemaakt heeft ma dan depr en anx)
   4. HBDLRM: geen idee wa deze is of deze doet
   5. MLE results
