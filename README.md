@@ -2,10 +2,13 @@ Jonas
 In Analyses
   deze moeten niet meer aangepast worden door mij, zijn al gemaakt voor deze specifieke dataset
   1. behaviour analyses (via converter omgezet in Rfile)
-  2. data aggregation (via converter omgezet in Rfile)
-  3. data set clara (de student van vorig jaar die thesis met deze dataset gemaakt heeft ma dan depr en anx)
-  4. HBDLRM: geen idee wa deze is of deze doet
-  5. MLE results
+           (checks the stipulated exclusion criteria)
+  3. data aggregation (via converter omgezet in Rfile)
+           (builds one large dataframe excluding all excluded participants (found in the Behavioural Analyses script + some extra listed by Judith as not having been paid
+                because they did not pass attention checks or something like that)
+  5. data set clara (de student van vorig jaar die thesis met deze dataset gemaakt heeft ma dan depr en anx)
+  6. HBDLRM: geen idee wa deze is of deze doet
+  7. MLE results
 
 bij correlation (allemaal gemaakt voor een gelijkaardige maar andere studie- moeten aangepast wordne voor mijn design)
   1. dual learning reward rates (hun onderzoeksvraag is dus ofdat dual learning reward rates beter deden dan een model met single, deze lijken me dus vrij irrelevant)
